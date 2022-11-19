@@ -1,1 +1,1 @@
-#Simple canary logger
+# Simple canary logger
