@@ -28,18 +28,14 @@
                         </tr>
                     </thead>
                     <tbody>
+                        {{range .}}
                         <tr>
-                            <td>T-shirt</td>
-                            <td>Pretty</td>
-                            <td>29</td>
-                            <td>10</td>
+                            <td>{{.Name}}</td>
+                            <td>{{.Description}}</td>
+                            <td>{{.Price}}</td>
+                            <td>{{.Qty}}</td>
                         </tr>
-                        <tr>
-                            <td>Notebook</td>
-                            <td>The best one</td>
-                            <td>2022</td>
-                            <td>2</td>
-                        </tr>
+                        {{end}}
                     </tbody>
                 </table>
             </div>
