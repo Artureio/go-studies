@@ -1,0 +1,23 @@
+version: '3.7'
+services:
+    postgres:
+        image: postgres:10.5
+        restart: always
+        environment: 
+          - POSTGRES_USER=postgres
+          - POSTGRES_PASSWORD=postgres
+        ports:
+          - '5432:5432'
+        volumes:
+          - ./init.sql:/docker-entrypoint-initdb.d/init.sql
+    golang:
+        image: golang:1.19
+        restart: always
+        ports:
+          - '8080:8080'
+        volumes:
+          - .:/go/src/github.com/artureio/web-app
+        working_dir: /go/src/github.com/artureio/web-app
+        command: go run main.go
+        depends_on:
+          - postgres
