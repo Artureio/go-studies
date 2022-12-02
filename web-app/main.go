@@ -9,6 +9,8 @@ import (
 	_ "github.com/lib/pq"
 )
 
+var temp = template.Must(template.ParseGlob("public/*.html"))
+
 func dbConnect() *sql.DB {
 	connection := "user=postgres dbname=postgres password=postgres host=host.docker.internal sslmode=disable"
 	db, err := sql.Open("postgres", connection)
@@ -24,8 +26,6 @@ type Products struct {
 	Price       float64
 	Ammount     int
 }
-
-var temp = template.Must(template.ParseGlob("public/*.html"))
 
 func main() {
 	http.HandleFunc("/", index)
